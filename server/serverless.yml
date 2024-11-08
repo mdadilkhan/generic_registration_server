@@ -1,0 +1,40 @@
+app: genericregistration
+service: genericregistration
+frameworkVersion: '3'
+
+
+plugins:
+ - serverless-offline
+
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: ap-south-1
+
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+
+      - http:
+          path: /{proxy}
+          method: any
+          cors:
+            origins: 'https://sage-turtle-copy.web.app'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true  # Set to true if you want to allow credentials (cookies, authorization headers) in CORS requests
+            maxAge: 86400  #
+# https://cmp-employee-17532.web.app
