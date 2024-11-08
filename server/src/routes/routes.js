@@ -1,4 +1,4 @@
-const {createOrder,verifyOrder,getNotification,registration} = require('../controller/user.controller')
+const {createOrder,verifyOrder,getNotification,registration, genricIntrestedRegistration} = require('../controller/user.controller')
 
 exports.routes = {
   ["/createOrder"]:{
@@ -12,5 +12,8 @@ exports.routes = {
   },
   ["/registration"]:{
     POST: registration
+  },
+  ["/genricIntrestedRegistration"]:{
+    POST: genricIntrestedRegistration
   },
 };
